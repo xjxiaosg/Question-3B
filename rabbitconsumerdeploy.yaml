@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitconsumer
+spec:
+  selector:
+    matchLabels:
+      app: rabbitconsumer
+  template:
+    metadata:
+      labels:
+        app: rabbitconsumer
+    spec:
+      containers:
+      - name: rabbitconsumer
+        image: xjxiao/rabbitconsumer:latest
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: RABBITMQ_PORT
+          value: "5672"
